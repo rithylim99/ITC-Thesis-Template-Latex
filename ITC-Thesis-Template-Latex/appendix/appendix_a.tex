@@ -1,0 +1,29 @@
+\subsection*{Appendix A: freeRTOS code}
+\addcontentsline{toc}{subsection}{Appendix A: freeRTOS code}
+\begin{lstlisting}[language=C, caption={main.c}]
+#include <stdio.h> //testing
+#include <stdbool.h>
+#include <unistd.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+void task1(void * param){
+	for(;;){
+		printf("Hello form %s \n", (char *) param);
+		vTaskDelay(1000/portTICK_PERIOD_MS);
+	}
+}
+void task2(void * param){
+	for(;;){
+		printf("Bye from %s \n", (char *) param);
+		vTaskDelay(2000/portTICK_PERIOD_MS);
+	}
+}
+void app_main(void)
+{
+	xTaskCreate(&task1, "Welcoming", 2048, "task1", 2, NULL);
+	xTaskCreatePinnedToCore(&task2, "Leaving", 2048, "task2", 2, NULL, 1);
+}
+
+}
+\end{lstlisting}

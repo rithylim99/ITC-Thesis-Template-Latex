@@ -1,0 +1,167 @@
+%================ Readme ================================
+% This template is make for ITC's report/thesis
+% Free for download and use
+% Author: LIM Rithy
+% Date: 12 Feb 2024
+% All the feature are build base on the thesis requirement and form by this link:
+% https://drive.google.com/file/d/1PQcS_dH-qYTQLc07f3P3I0fKDYjvcWWe/view
+%========================================================
+\documentclass[a4paper, 12pt]{article}
+\usepackage[T1]{fontenc}
+% Graphic and Figure
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}
+\usepackage{tikz, tcolorbox}
+\usepackage{pgf-pie}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{pgfplots}
+%Margin
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Math
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\renewcommand{\theequation}{\textbf{Eq.\hspace{1mm}\thesection.\arabic{equation}.}}
+
+%Font
+\renewcommand{\baselinestretch}{1.5}%set spacing
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\XeTeXlinebreaklocale "KHM"
+\XeTeXlinebreakskip=0pt
+\usepackage[no-math]{fontspec}
+\usepackage[MnSymbol]{mathspec}
+\newcommand{\KhOS}{\fontspec[Script=Khmer,Scale=1]{Khmer OS Siemreap}\selectfont}
+\newcommand{\KhOSsy}{\fontspec[Script=Khmer,Scale=1]{Khmer OS Siemreap}\selectfont}
+\newcommand{\KhOSml}{\fontspec[Script=Khmer,Scale=1]{Khmer OS Muol Light}\selectfont}
+\newfontscript{Khmer}{khmer}
+\usepackage{xunicode}
+\setmainfont{Times New Roman}
+
+%Enumerate and Itemize
+\usepackage{enumitem}
+\usepackage{tasks}
+
+%Section Format
+\usepackage{titlesec}
+
+\titleformat*{\section}{\fontsize{12pt}{10pt}\selectfont\bfseries}
+\titleformat*{\subsection}{\fontsize{12pt}{10pt}\selectfont\bfseries}
+\titleformat*{\subsubsection}{\fontsize{12pt}{10pt}\selectfont\bfseries}
+\titleformat*{\paragraph}{\fontsize{12pt}{12pt}\selectfont\bfseries}
+\titleformat*{\subparagraph}{\fontsize{12pt}{12pt}\selectfont\bfseries}
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+\usepackage{titlesec}
+
+%Content
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1em}{2.3em}}
+\makeatother
+\usepackage[hidelinks]{hyperref} %creats the links
+\usepackage{titletoc}
+
+% Adjust the indentation for subsections in the table of contents
+\titlecontents{subsection}
+[1.5em] % Adjust this value as needed
+{} % No formatting for subsections
+{\thecontentslabel\hspace{1em}} % Adjust this value as needed
+{} % No formatting for subsections
+{\titlerule*[0.5pc]{.}\contentspage} % Add dots and page number
+
+% Adjust the indentation for subsections in the table of contents
+\titlecontents{section}
+ % Adjust this value as needed
+{} % No formatting for subsections
+{\thecontentslabel\hspace{1em}} % Adjust this value as needed
+{} % No formatting for subsections
+{\titlerule*[0.5pc]{.}\contentspage} % Add dots and page number
+
+%Spacing
+\usepackage{setspace}
+
+%Caption 
+\usepackage{caption}
+\captionsetup[table]{labelsep=space}
+\renewcommand{\thetable}{{\thesection\arabic{table}.}}
+\captionsetup[figure]{labelsep=space}
+\renewcommand{\thefigure}{\thesection \arabic{figure}.}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+
+%Coding
+\usepackage{listings} % For including C/C++ code
+\usepackage{xcolor} % For colors
+\lstset{
+    basicstyle=\ttfamily\footnotesize, % Set the font to typewriter (monospaced)
+    columns=fullflexible, % Ensure proper spacing
+    breaklines=true, % Allow line breaks
+    frame=single, % Add a frame around the code
+    showstringspaces=false, % Don't show spaces as underscores
+    % Add color to the code
+    keywordstyle=\color{red}, % Keywords in blue
+    commentstyle=\color{white!60!black}, % Comments in green
+    stringstyle=\color{green!60!black}, % Strings in orange
+    identifierstyle=\color{black}, % Identifiers in red
+    emphstyle=\color{violet}, % Emphasized text in violet
+    emphstyle={[2]\color{teal}}, % Additional emphasized text in teal
+    morekeywords={printf, scanf}
+}
+\captionsetup[lstlisting]{labelformat=empty}
+
+%PDF
+\usepackage{pdfpages}
+
+\title{ITC-Thesis-Template}
+\author{Lim Rithy}
+\date{February 2024}
+
+\begin{document}
+\includepdf[page={1,2,3}]{Thesiscover}
+\captionsetup{labelfont=bf}
+\pagenumbering{roman} % Set the page number to roman
+\include{chapter/acknowledgements}
+\include{chapter/Summery}
+\include{chapter/Resume}
+\include{chapter/abstract}
+\include{chapter/symbol}
+%Content----------------------------------------------------------------------------
+\doublespacing
+		\renewcommand{\contentsname}{\centering \normalsize TABLE OF CONTENTS}
+		\tableofcontents
+		\newpage
+		\renewcommand{\listfigurename}{\normalsize \centering LIST OF FIGURES}
+		\addcontentsline{toc}{section}{LIST OF FIGURES}
+		{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+}
+		\clearpage
+		\renewcommand{\listtablename}{\centering \normalsize LIST OF TABLES}
+		\addcontentsline{toc}{section}{LIST OF TABLES}
+  		{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\tablename~\oldnumberline}%
+		\listoftables%
+}
+		\clearpage
+  %End Content-----------------------------------------------------------------------
+\pagenumbering{arabic} % Set the page number to arabic
+\include{chapter/introduction}
+\include{chapter/literature}
+\include{chapter/methodology}
+\include{chapter/result}
+\include{chapter/conclusion}
+% Refernece
+\bibliographystyle{plain}
+\bibliography{references}
+\addcontentsline{toc}{section}{References}
+%Appendix
+\newpage
+\section*{\centering APPENDICES}
+\addcontentsline{toc}{section}{APPENDICES}
+\newpage
+\include{appendix/appendix_a}
+\end{document}
